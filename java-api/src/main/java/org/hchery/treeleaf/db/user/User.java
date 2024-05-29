@@ -6,6 +6,7 @@ import lombok.ToString;
 import org.hchery.treeleaf.db.MutableDbModel;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serial;
 
@@ -24,8 +25,12 @@ public class User extends MutableDbModel {
     private static final long serialVersionUID = -4671206584927585347L;
 
     @Indexed(unique = true)
+    @Field("email")
     private String email;
 
+    @Field("password")
     private String password;
+
+    @Field("phone")
     private String phone;
 }

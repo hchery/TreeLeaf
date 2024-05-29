@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serial;
 import java.util.Date;
@@ -22,5 +23,6 @@ public abstract class MutableDbModel extends ImmutableDbModel {
     private static final long serialVersionUID = -8126447441783658508L;
 
     @LastModifiedDate
+    @Field("update_time")
     private Date updateTime;
 }

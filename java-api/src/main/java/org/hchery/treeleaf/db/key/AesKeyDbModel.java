@@ -1,16 +1,15 @@
-package org.hchery.treeleaf.db;
+package org.hchery.treeleaf.db.key;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serial;
-import java.util.Date;
 
 /**
- * DATE: 2024/5/14
+ * DATE: 2024/5/29
  * AUTHOR: hchery
  * URL: https://github.com/hchery
  * EMAIL: h.chery@qq.com
@@ -18,11 +17,11 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
-public abstract class ImmutableDbModel extends DbModel {
+@Document("keys_aes")
+public class AesKeyDbModel extends KeyDbModel {
     @Serial
-    private static final long serialVersionUID = 1848702131918073483L;
+    private static final long serialVersionUID = 6377124332915353282L;
 
-    @CreatedDate
-    @Field("create_time")
-    private Date createTime;
+    @Field("key")
+    private byte[] key;
 }
