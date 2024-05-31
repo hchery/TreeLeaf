@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component
  * URL: https://github.com/hchery
  * EMAIL: h.chery@qq.com
  */
+
 @Component
 class RefreshTokenCrypto : AesCrypto("refresh-token") {
 

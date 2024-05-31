@@ -16,5 +16,6 @@ public class LoginResponse implements ApiResponse {
     @Serial
     private static final long serialVersionUID = 3034923934444502936L;
 
-    private int test = 1;
+    private String refreshToken;
+    private String accessToken;
 }

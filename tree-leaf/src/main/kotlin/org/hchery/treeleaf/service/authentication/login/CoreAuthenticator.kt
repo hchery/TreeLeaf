@@ -36,6 +36,6 @@ class FinalPointAuthenticator : Authenticator {
     override val next: Authenticator? = null
 
     override fun authenticate(user: User, request: LoginRequest, addAfter: AddAuthenticatorAfter): LoginResponse {
-        return loginNoHandler("No login handler for authentication type: ${request.type.name}")
+        return loginNoHandler("No login handler for authentication type: ${request.authenticationType.name}")
     }
 }

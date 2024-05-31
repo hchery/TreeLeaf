@@ -1,5 +1,6 @@
 package org.hchery.treeleaf
 
+import org.apache.commons.lang3.time.DateUtils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.time.Duration
@@ -24,6 +25,15 @@ fun duration(text: DurationText): Duration {
 }
 
 fun nowDate(): Date = Date()
+
+fun afterDate(date: Date = nowDate(), day: Int = 0, hour: Int = 0, minute: Int = 0, second: Int = 0): Date {
+    var newDate = date
+    if (day != 0) newDate = DateUtils.addDays(newDate, day)
+    if (hour != 0) newDate = DateUtils.addHours(newDate, hour)
+    if (minute != 0) newDate = DateUtils.addMinutes(newDate, minute)
+    if (second != 0) newDate = DateUtils.addSeconds(newDate, second)
+    return newDate
+}
 
 inline fun <reified T> java(): Class<T> {
     return T::class.java

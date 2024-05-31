@@ -29,6 +29,7 @@ subprojects {
     implementation spring.starter.cache
     implementation location.ip2region
     implementation location.geoip2city
+    implementation kit.commons.lang3
     testImplementation spring.starter.test
   }
   tasks.withType(KotlinCompile).configureEach {

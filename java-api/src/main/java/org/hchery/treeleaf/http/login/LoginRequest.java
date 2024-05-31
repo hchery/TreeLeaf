@@ -19,5 +19,5 @@ public class LoginRequest implements ApiRequest {
 
     private String email;
     private String password;
-    private AuthenticationType type = AuthenticationType.PASSWORD;
+    private AuthenticationType authenticationType = AuthenticationType.PASSWORD;
 }

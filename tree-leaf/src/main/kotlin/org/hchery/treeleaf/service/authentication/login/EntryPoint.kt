@@ -11,6 +11,7 @@ import org.hchery.treeleaf.service.user.UserService
 import org.hchery.treeleaf.spring.AppEvent
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.Date
 
 /**
@@ -35,6 +36,7 @@ class LoginEntryPointService(
     private val userService: UserService
 ) : LoginEntryPoint {
 
+    @Transactional
     override fun invoke(request: LoginRequest): LoginResponse {
         val user = fetchUser(request)
         val hooks = mutableListOf<AuthenticatorAfter>()
@@ -53,13 +55,13 @@ class LoginEntryPointService(
     }
 
     private fun createEvent(user: User, request: LoginRequest): LoginEvent {
-        return LoginEvent(this).apply {
-            userId = user.id
-            remoteIp = client.remoteIp
-            userAgent = client.userAgent
-            time = nowDate()
-            type = request.type
-        }
+        val loginEvent = LoginEvent(this)
+        loginEvent.userId = user.id
+        loginEvent.remoteIp = client.remoteIp
+        loginEvent.userAgent = client.userAgent
+        loginEvent.time = nowDate()
+        loginEvent.authenticationType = request.authenticationType
+        return loginEvent
     }
 
     private fun fetchUser(request: LoginRequest): User {
@@ -79,7 +81,7 @@ class LoginEvent(src: Any) : AppEvent(src) {
     lateinit var remoteIp: String
     lateinit var userAgent: String
     lateinit var time: Date
-    lateinit var type: AuthenticationType
+    lateinit var authenticationType: AuthenticationType
 }
 
 private fun LoginEvent.makeCompleted() {

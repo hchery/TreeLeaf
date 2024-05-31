@@ -21,11 +21,12 @@ class PasswordCheckAuthenticator(
     @Qualifier("finalPointAuthenticator") override val next: Authenticator,
     private val ctx: ApplicationContext,
     private val pwdInvalidCnt: PasswordInvalidCounter,
-    private val passwordEncoder: PasswordEncoder
+    private val passwordEncoder: PasswordEncoder,
+    private val loginResponseGenerator: LoginResponseGenerator
 ) : Authenticator {
 
     override fun authenticate(user: User, request: LoginRequest, addAfter: AddAuthenticatorAfter): LoginResponse {
-        if (request.type != AuthenticationType.PASSWORD) {
+        if (request.authenticationType != AuthenticationType.PASSWORD) {
             return next.authenticate(user, request, addAfter)
         }
         return doAuthenticate(user, request, addAfter)
@@ -36,8 +37,7 @@ class PasswordCheckAuthenticator(
             return doAuthenticateError(user)
         }
         addAfter { pwdInvalidCnt.delete(user.id) }
-        // todo generate token
-        return LoginResponse()
+        return loginResponseGenerator.make(user.id)
     }
 
     private fun doAuthenticateError(user: User): LoginResponse {

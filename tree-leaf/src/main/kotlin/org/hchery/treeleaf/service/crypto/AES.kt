@@ -2,6 +2,7 @@ package org.hchery.treeleaf.service.crypto
 
 import jakarta.annotation.Resource
 import org.hchery.treeleaf.db.key.AesKeyDbModel
+import org.hchery.treeleaf.slf4j
 import org.springframework.beans.factory.InitializingBean
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
@@ -12,6 +13,7 @@ import javax.crypto.spec.SecretKeySpec
  * URL: https://github.com/hchery
  * EMAIL: h.chery@qq.com
  */
+private val log = slf4j<AesCrypto>()
 
 abstract class AesCrypto(protected val name: String) : InitializingBean {
 
@@ -41,6 +43,9 @@ abstract class AesCrypto(protected val name: String) : InitializingBean {
     }
 
     override fun afterPropertiesSet() {
-        keyModel = aesKeyResolve(name) { newKey(::makeNewAesKey) }
+        keyModel = aesKeyResolve(name) {
+            log.info("Initializing aes crypto key for: '$name'.")
+            newKey(::makeNewAesKey)
+        }
     }
 }
