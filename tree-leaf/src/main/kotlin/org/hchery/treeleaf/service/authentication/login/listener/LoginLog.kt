@@ -1,6 +1,7 @@
 package org.hchery.treeleaf.service.authentication.login.listener
 
 import org.hchery.treeleaf.components.locate.IpRegion
+import org.hchery.treeleaf.db.authentication.LoginErrorType
 import org.hchery.treeleaf.db.log.LoginLog
 import org.hchery.treeleaf.service.authentication.login.LoginEvent
 import org.hchery.treeleaf.service.log.login.LoginLogService
@@ -36,7 +37,7 @@ class LoginEventLogListener(
         log.loginTime = event.time
         log.isSuccess = event.loginSuccess
         log.authenticationType = event.authenticationType
-        log.errorType = event.loginErrorType
+        log.errorType = event.loginErrorType ?: LoginErrorType.SERVER_ERROR
         return log
     }
 }

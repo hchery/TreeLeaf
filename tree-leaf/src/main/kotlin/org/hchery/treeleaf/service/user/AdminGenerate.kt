@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service
  */
 
 private const val DefaultAdminEmail = "admin@default.tf"
+private const val DefaultAdminNick = "Administrator"
 
 private val log = slf4j<AdminUserAutoConfigureService>()
 
@@ -35,6 +36,7 @@ class AdminUserAutoConfigureService(
     private fun autoGenerateAdmin() {
         val admin = User().apply {
             email = DefaultAdminEmail
+            nickname = DefaultAdminNick
             password = stringRandom()
         }
         log.info("""No admin account configured, auto generated.

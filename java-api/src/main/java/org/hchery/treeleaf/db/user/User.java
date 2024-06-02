@@ -28,9 +28,14 @@ public class User extends MutableDbModel {
     @Field("email")
     private String email;
 
+    @Indexed
+    @Field("nickname")
+    private String nickname;
+
     @Field("password")
     private String password;
 
+    @Indexed
     @Field("phone")
     private String phone;
 }

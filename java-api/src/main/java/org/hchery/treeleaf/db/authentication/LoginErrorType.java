@@ -19,7 +19,8 @@ public enum LoginErrorType implements Serializable {
     NO_HANDLER(1, 10403, "无效认证类型"),
     NO_SUCH_USER(2, 10404, "用户不存在"),
     PASSWORD_INVALID(3, 10401, "登录密码错误"),
-    LOGIN_LIMITED(4, 10403, "限制登录")
+    LOGIN_LIMITED(4, 10403, "限制登录"),
+    SERVER_ERROR(5, 10500, "服务故障"),
     ;
 
     @Serial
