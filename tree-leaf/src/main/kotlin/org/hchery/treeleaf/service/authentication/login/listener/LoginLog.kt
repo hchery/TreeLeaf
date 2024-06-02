@@ -37,7 +37,14 @@ class LoginEventLogListener(
         log.loginTime = event.time
         log.isSuccess = event.loginSuccess
         log.authenticationType = event.authenticationType
-        log.errorType = event.loginErrorType ?: LoginErrorType.SERVER_ERROR
+        log.errorType = getErrorType(event)
         return log
+    }
+
+    private fun getErrorType(event: LoginEvent): LoginErrorType? {
+        if (event.loginSuccess) {
+            return null
+        }
+        return event.loginErrorType ?: LoginErrorType.SERVER_ERROR
     }
 }
