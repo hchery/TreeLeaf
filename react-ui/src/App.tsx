@@ -5,7 +5,7 @@
  * EMAIL: h.chery@qq.com
  */
 import {RC} from "@/components/reactor";
-import {App as AppContext, ConfigProvider} from "antd";
+import {App as AppProvider, ConfigProvider} from "antd";
 import {ThemeProvider} from "antd-style";
 import {useStore} from "@/state";
 import {makeTheme} from "@/personalize/theme";
@@ -13,22 +13,28 @@ import {Routers} from "@/application";
 import {BrowserRouter} from "react-router-dom";
 import {css} from "@emotion/react";
 
-const Theme = RC(() => {
+export const AppRoute = RC(() => {
+  return (
+    <BrowserRouter>
+      <Routers/>
+    </BrowserRouter>
+  )
+})
+
+export const AppTheme = RC(() => {
   const {mode} = useStore().themeStore
   return (
     <ThemeProvider appearance={mode} theme={makeTheme}>
-      <BrowserRouter>
-        <Routers/>
-      </BrowserRouter>
+      <AppRoute/>
     </ThemeProvider>
   )
 })
 
-const Context = RC(() => {
+export const AppContext = RC(() => {
   return (
-    <AppContext css={css`width: 100%; height: 100%`}>
-      <Theme/>
-    </AppContext>
+    <AppProvider css={css`width: 100%; height: 100%`}>
+      <AppTheme/>
+    </AppProvider>
   )
 })
 
@@ -36,7 +42,7 @@ export const App = RC(() => {
   const {i18n} = useStore().i18nStore
   return (
     <ConfigProvider locale={i18n.antd}>
-      <Context/>
+      <AppContext/>
     </ConfigProvider>
   )
 })
