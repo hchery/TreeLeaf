@@ -11,6 +11,7 @@ import {useStore} from "@/state";
 import {makeTheme} from "@/personalize/theme";
 import {Routers} from "@/application";
 import {BrowserRouter} from "react-router-dom";
+import {css} from "@emotion/react";
 
 const Theme = RC(() => {
   const {mode} = useStore().themeStore
@@ -25,7 +26,7 @@ const Theme = RC(() => {
 
 const Context = RC(() => {
   return (
-    <AppContext>
+    <AppContext css={css`width: 100%; height: 100%`}>
       <Theme/>
     </AppContext>
   )

@@ -17,14 +17,14 @@ const pagesRoutePoint: RouteObject = {
   children: [
     AuthRoute
   ],
-  path: "/ui",
+  path: "/-v-",
   element: <EntryView/>,
 }
 
 export const Routers = () => useRoutes([
   {
     path: "/",
-    element: <Navigate to={"/ui/auth/open/login"}/>
+    element: <Navigate to={"/-v-/auth/open/login"}/>
   },
   {
     path: "*",
