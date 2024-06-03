@@ -10,10 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.5",
+    "antd": "^5.15.4",
+    "antd-style": "^3.6.2",
+    "axios": "^1.7.2",
+    "mobx": "^6.12.1",
+    "mobx-react": "^9.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "mobx": "^6.12.1",
-    "mobx-react": "^9.1.0"
+    "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.11.0",

@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("UbuntuMono-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url("UbuntuMono-Bold.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("Inter-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("Inter-Bold.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Hiragino Sans GB";
+  src: url("Hiragino Sans GB W3.otf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Hiragino Sans GB";
+  src: url("Hiragino Sans GB W6.otf");
+  font-style: normal;
+  font-weight: bold;
+}
