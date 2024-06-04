@@ -13,6 +13,8 @@ export interface BaseToken extends MapToken {
 }
 
 export interface ExtraToken {
+  fontFamily: string,
+  fontFamilyMain: string
 }
 
 declare module "antd-style" {

@@ -7,4 +7,6 @@
 import {ExtraToken} from "@/personalize/theme";
 
 export const extraToken: ExtraToken = {
+  fontFamily: "Inter, \"Hiragino Sans GB\", serif",
+  fontFamilyMain: "\"Ubuntu Mono\", serif"
 }
