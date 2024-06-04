@@ -4,25 +4,19 @@
  * URL: https://github.com/hchery
  * EMAIL: h.chery@qq.com
  */
+import {MapToken} from "antd/lib/theme/interface";
 import {ThemeAppearance} from "antd-style";
-import darkTheme from "@/personalize/theme/es/dark";
-import lightTheme from "@/personalize/theme/es/light";
 
 export type ThemeMode = ThemeAppearance
 
-export interface AppToken {
+export interface BaseToken extends MapToken {
 }
 
-export interface StyleToken {
+export interface ExtraToken {
 }
 
 declare module "antd-style" {
-  export interface CustomToken extends AppToken, StyleToken {}
+  export interface CustomToken extends BaseToken, ExtraToken {}
 }
 
-export function makeTheme(mode: ThemeMode) {
-  switch (mode) {
-    case "dark": return darkTheme
-    default: return lightTheme
-  }
-}
+export * from "./maker"

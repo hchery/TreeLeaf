@@ -4,6 +4,6 @@
  * URL: https://github.com/hchery
  * EMAIL: h.chery@qq.com
  */
-import {PropsWithChildren} from "react";
+import {HTMLAttributes, PropsWithChildren} from "react";
 
-export type Slot = PropsWithChildren
+export type Slot = PropsWithChildren<HTMLAttributes<unknown>>

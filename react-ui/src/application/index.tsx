@@ -8,9 +8,15 @@ import {Navigate, Outlet, RouteObject, useRoutes} from "react-router-dom";
 import {RC} from "@/components/reactor";
 import {AuthRoute} from "@/application/auth";
 import {NotFoundView} from "@/application/error/404";
+import {Layout} from "antd";
+import {stl} from "@/application/ui/css";
 
 export const EntryView = RC(() => {
-  return (<Outlet/>)
+  return (
+    <Layout css={stl.fill}>
+      <Outlet/>
+    </Layout>
+  )
 })
 
 const pagesRoutePoint: RouteObject = {
@@ -21,10 +27,14 @@ const pagesRoutePoint: RouteObject = {
   element: <EntryView/>,
 }
 
+export const RootView = RC(() => {
+  return (<Navigate to={"/-v-/auth/open/login"}/>)
+})
+
 export const Routers = () => useRoutes([
   {
     path: "/",
-    element: <Navigate to={"/-v-/auth/open/login"}/>
+    element: <RootView/>
   },
   {
     path: "*",
