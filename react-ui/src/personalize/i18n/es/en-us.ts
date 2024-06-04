@@ -5,10 +5,9 @@
  * EMAIL: h.chery@qq.com
  */
 import {I18n} from "@/personalize/i18n";
-import en_US from "antd/locale/en_US"
 
 const en_us: I18n = {
-  antd: en_US
+  "doc.title.auth.login": "Login"
 }
 
 export default en_us

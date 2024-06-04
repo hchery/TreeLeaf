@@ -5,10 +5,9 @@
  * EMAIL: h.chery@qq.com
  */
 import {I18n} from "@/personalize/i18n";
-import zh_CN from "antd/locale/zh_CN"
 
 const zh_cn: I18n = {
-  antd: zh_CN
+  "doc.title.auth.login": "登录"
 }
 
 export default zh_cn

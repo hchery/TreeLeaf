@@ -6,10 +6,14 @@
  */
 import {RouteObject} from "react-router-dom";
 import {RC} from "@/components/reactor";
+import {DocumentTitle} from "@/application/ui/document";
+import {useI18n} from "@/state/i18n";
 
 export const LoginView = RC(() => {
   return (
-    <></>
+    <DocumentTitle title={useI18n("doc.title.auth.login")}>
+      <></>
+    </DocumentTitle>
   )
 })
 

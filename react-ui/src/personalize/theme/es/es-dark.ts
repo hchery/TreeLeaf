@@ -6,10 +6,10 @@
  */
 import {SeedToken} from "antd/es/theme/interface";
 import {MapToken} from "antd/lib/theme/interface";
-import {CustomToken} from "antd-style";
 import {theme} from "antd";
+import {BaseToken} from "@/personalize/theme";
 
-export const makeDarkTheme = (seedToken: SeedToken, mapToken?: MapToken): CustomToken => ({
+export const makeDarkTheme = (seedToken: SeedToken, mapToken?: MapToken): BaseToken => ({
   ...theme.darkAlgorithm(seedToken, mapToken),
   colorBgLayout: "rgb(40, 40, 40)"
 })

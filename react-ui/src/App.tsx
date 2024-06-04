@@ -12,6 +12,7 @@ import {makeTheme} from "@/personalize/theme";
 import {Routers} from "@/application";
 import {BrowserRouter} from "react-router-dom";
 import {css} from "@emotion/react";
+import {makeI18nAntd} from "@/personalize/i18n";
 
 export const AppRoute = RC(() => {
   return (
@@ -39,9 +40,9 @@ export const AppContext = RC(() => {
 })
 
 export const App = RC(() => {
-  const {i18n} = useStore().i18nStore
+  const {mode} = useStore().i18nStore
   return (
-    <ConfigProvider locale={i18n.antd}>
+    <ConfigProvider locale={makeI18nAntd(mode)}>
       <AppContext/>
     </ConfigProvider>
   )

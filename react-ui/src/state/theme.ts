@@ -14,4 +14,8 @@ export class ThemeStore {
   constructor() {
     makeAutoObservable(this)
   }
+
+  newMode(mode: ThemeMode) {
+    this.mode = mode
+  }
 }
