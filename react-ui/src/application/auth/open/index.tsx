@@ -8,7 +8,7 @@ import {Outlet, RouteObject} from "react-router-dom";
 import {RC} from "@/components/reactor";
 import {LoginRoute} from "@/application/auth/open/login";
 
-export const OpenView = RC(() => {
+const OpenView = RC(() => {
   return (<Outlet/>)
 })
 

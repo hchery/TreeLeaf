@@ -14,7 +14,7 @@ import {BrowserRouter} from "react-router-dom";
 import {css} from "@emotion/react";
 import {makeI18nAntd} from "@/personalize/i18n";
 
-export const AppRoute = RC(() => {
+const AppRoute = RC(() => {
   return (
     <BrowserRouter>
       <Routers/>
@@ -22,7 +22,7 @@ export const AppRoute = RC(() => {
   )
 })
 
-export const AppTheme = RC(() => {
+const AppTheme = RC(() => {
   const {mode} = useStore().themeStore
   return (
     <ThemeProvider appearance={mode} theme={makeTheme}>
@@ -31,7 +31,7 @@ export const AppTheme = RC(() => {
   )
 })
 
-export const AppContext = RC(() => {
+const AppContext = RC(() => {
   return (
     <AppProvider css={css`width: 100%; height: 100%`}>
       <AppTheme/>
