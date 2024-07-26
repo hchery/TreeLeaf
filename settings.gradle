@@ -1,0 +1,45 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
+dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    mavenLocal()
+    maven {url 'https://maven.aliyun.com/repository/public/'}
+    maven {url 'https://maven.aliyun.com/repository/central'}
+    mavenCentral()
+  }
+  versionCatalogs {
+    create('spring') {
+      plugin('boot', 'org.springframework.boot').version('3.2.4')
+      plugin('dependency', 'io.spring.dependency-management').version('1.1.4')
+      library('security.crypto', 'org.springframework.security', 'spring-security-crypto').withoutVersion()
+      library('starter.web', 'org.springframework.boot', 'spring-boot-starter-web').withoutVersion()
+      library('starter.test', 'org.springframework.boot', 'spring-boot-starter-test').withoutVersion()
+      library('starter.mongodb', 'org.springframework.boot', 'spring-boot-starter-data-mongodb').withoutVersion()
+      library('starter.redis', 'org.springframework.boot', 'spring-boot-starter-data-redis').withoutVersion()
+      library('starter.cache', 'org.springframework.boot', 'spring-boot-starter-cache').withoutVersion()
+    }
+    create('kt') {
+      plugin('jvm', 'org.jetbrains.kotlin.jvm').version('1.9.23')
+      plugin('spring', 'org.jetbrains.kotlin.plugin.spring').version('1.9.23')
+      library('stdlib', 'org.jetbrains.kotlin', 'kotlin-stdlib').withoutVersion()
+      library('reflect', 'org.jetbrains.kotlin', 'kotlin-reflect').withoutVersion()
+    }
+    create('codec') {
+      library('lombok', 'org.projectlombok', 'lombok').withoutVersion()
+    }
+    create('location') {
+      library('ip2region', 'org.lionsoul', 'ip2region').version('2.7.0')
+      library('geoip2city', 'com.maxmind.geoip2', 'geoip2').version('4.2.0')
+    }
+    create('kit') {
+      library('commons-lang3', 'org.apache.commons', 'commons-lang3').withoutVersion()
+    }
+  }
+}
+
+rootProject.name = "$PROJ_artifactId"
+
+include 'components'
+include 'java-api'
+include 'tree-leaf'

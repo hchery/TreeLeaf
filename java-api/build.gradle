@@ -1,0 +1,14 @@
+plugins {
+  id 'java'
+  alias spring.plugins.boot
+  alias spring.plugins.dependency
+  alias kt.plugins.jvm
+  alias kt.plugins.spring
+}
+
+dependencies {
+  implementation codec.lombok
+  annotationProcessor codec.lombok
+  testImplementation codec.lombok
+  testAnnotationProcessor codec.lombok
+}

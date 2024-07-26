@@ -1,0 +1,47 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+  id 'java'
+  alias spring.plugins.boot
+  alias spring.plugins.dependency
+  alias kt.plugins.jvm
+  alias kt.plugins.spring
+}
+
+allprojects {
+  group = "$PROJ_groupId"
+  version = "$PROJ_version"
+}
+
+subprojects {
+  apply { plugin 'java' }
+  java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+  }
+  dependencies {
+    implementation kt.stdlib
+    implementation kt.reflect
+    implementation spring.security.crypto
+    implementation spring.starter.web
+    implementation spring.starter.mongodb
+    implementation spring.starter.redis
+    implementation spring.starter.cache
+    implementation location.ip2region
+    implementation location.geoip2city
+    implementation kit.commons.lang3
+    testImplementation spring.starter.test
+  }
+  tasks.withType(KotlinCompile).configureEach {
+    kotlinOptions {
+      freeCompilerArgs += [
+        '-Xjsr305=strict',
+        '-Xjvm-default=all'
+      ]
+      jvmTarget = JavaVersion.VERSION_21
+    }
+  }
+  tasks.named('test', Test) {
+    useJUnitPlatform()
+  }
+}
